@@ -1,0 +1,196 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─────────────────────────────────────────────
+   RESET
+───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS
+───────────────────────────────────────────── */
+:root {
+  --yellow:       #f5c518;
+  --yellow-light: #ffd700;
+  --yellow-dark:  #c9a000;
+  --black:        #0a0a0a;
+  --black-2:      #111111;
+  --black-3:      #1a1a1a;
+  --gray:         #888888;
+  --white:        #ffffff;
+  --navbar-h:     72px;
+}
+
+/* ─────────────────────────────────────────────
+   BASE
+───────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--black);
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--white);
+  overflow-x: hidden;
+  min-width: 320px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ─────────────────────────────────────────────
+   SCROLLBAR
+───────────────────────────────────────────── */
+::-webkit-scrollbar         { width: 5px; }
+::-webkit-scrollbar-track   { background: #111; }
+::-webkit-scrollbar-thumb   { background: var(--yellow); border-radius: 3px; }
+
+/* ─────────────────────────────────────────────
+   LAYOUT HELPERS
+───────────────────────────────────────────── */
+
+/* Universal page wrapper — pushes content below fixed navbar */
+.page-wrapper {
+  padding-top: var(--navbar-h);
+}
+
+/* Centred, max-width container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(16px, 4vw, 40px);
+  padding-right: clamp(16px, 4vw, 40px);
+}
+
+/* Section vertical rhythm */
+.section-padding {
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────────────── */
+.display-font {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* ─────────────────────────────────────────────
+   BRAND COLOURS / EFFECTS
+───────────────────────────────────────────── */
+.yellow-glow {
+  box-shadow: 0 0 30px rgba(245, 197, 24, 0.3);
+}
+
+.yellow-glow-text {
+  text-shadow: 0 0 20px rgba(245, 197, 24, 0.5);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f5c518, #ffd700, #c9a000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─────────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────────── */
+.shimmer-btn {
+  background: linear-gradient(90deg, var(--yellow), var(--yellow-light), var(--yellow));
+  background-size: 200% auto;
+  animation: shimmer 3s linear infinite;
+  color: #000;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* ─────────────────────────────────────────────
+   CARD
+───────────────────────────────────────────── */
+.card-hover {
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.35s ease;
+}
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(245, 197, 24, 0.15);
+}
+
+/* ─────────────────────────────────────────────
+   BACKGROUND PATTERNS
+───────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(245, 197, 24, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245, 197, 24, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+───────────────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-20px); }
+}
+
+@keyframes pulse-yellow {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100px); opacity: 0; }
+  to   { transform: translateX(0);      opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100px); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
