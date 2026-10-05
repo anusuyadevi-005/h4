@@ -305,12 +305,7 @@ function Machinery() {
           {/* Machine grid */}
           <motion.div 
             layout
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
-              gap: 20,
-              alignItems: "start"
-            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-start"
           >
             <AnimatePresence>
               {filtered.map((machine, i) => (

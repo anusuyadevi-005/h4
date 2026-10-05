@@ -82,14 +82,7 @@ function WhyChoose() {
         </div>
 
         {/* Two-column layout */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "56px",
-            alignItems: "start",
-          }}
-        >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
           {/* LEFT — description + checklist + stats */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -127,7 +120,7 @@ function WhyChoose() {
             </div>
 
             {/* Quick stats */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginTop: 32 }}>
+            <div className="grid grid-cols-3 gap-3 mt-8">
               {quickStats.map((stat, i) => (
                 <motion.div
                   key={i}
@@ -150,7 +143,7 @@ function WhyChoose() {
           </motion.div>
 
           {/* RIGHT — 2×3 services grid */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: 16 }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {services.map((s, i) => (
               <motion.div
                 key={i}

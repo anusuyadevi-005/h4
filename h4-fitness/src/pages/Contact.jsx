@@ -173,8 +173,15 @@ function Contact() {
                   delay={0.3}
                   icon={<FaEnvelope />}
                   title="Email Address"
-                  text="info@h4fitness.in"
-                  href="mailto:info@h4fitness.in"
+                  text="h4fitnessstudio@gmail.com"
+                  href="mailto:h4fitnessstudio@gmail.com"
+                />
+                <ContactInfoCard
+                  delay={0.4}
+                  icon={<FaEnvelope />}
+                  title="Email Address"
+                  text="Karthik.d84@gmail.com"
+                  href="mailto:Karthik.d84@gmail.com"
                 />
               </div>
 

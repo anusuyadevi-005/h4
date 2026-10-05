@@ -167,13 +167,7 @@ function Testimonials() {
         </div>
 
         {/* Cards */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 20,
-          marginBottom: 36,
-          alignItems: "stretch",
-        }}>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-9 items-stretch">
           <AnimatePresence mode="wait">
             {visible.map((t, i) => (
               <motion.div
@@ -182,7 +176,7 @@ function Testimonials() {
                 animate={{ opacity: 1, x: 0,  scale: 1 }}
                 exit={{ opacity: 0, x: direction > 0 ? -100 : 100, scale: 0.9 }}
                 transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.05 }}
-                style={{ height: "100%" }}
+                className={i > 0 ? "hidden md:block h-full" : "block h-full"}
               >
                 <TestimonialCard t={t} featured={i === 1} />
               </motion.div>

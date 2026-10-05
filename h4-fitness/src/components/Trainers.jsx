@@ -5,38 +5,99 @@ import { FaDumbbell, FaStar, FaInstagram, FaWhatsapp } from "react-icons/fa";
 const trainers = [
   {
     id:   1,
-    name: "R. Hariharasudhan",
+    name: "",
     role: "Head Trainer & Founder",
     speciality: "Strength & Conditioning",
     exp:  "10+ Yrs",
-    img:  "/trainer1.png",
+    img:  "/trainers/founder.jpg",
     rating: 5,
     certifications: ["ISSA Certified", "Nutrition Coach"],
     desc: "Certified fitness expert specializing in strength training, muscle building, and weight loss transformations.",
     whatsapp: "tel:+919840431433",
+    isFounder: true,
   },
   {
     id:   2,
-    name: "Priya Lakshmi",
-    role: "Fitness Trainer",
-    speciality: "HIIT & Functional Fitness",
-    exp:  "6+ Yrs",
-    img:  "/trainer2.png",
+    name: "",
+    role: "Senior Fitness Trainer",
+    speciality: "Strength & Bodybuilding",
+    exp:  "7+ Yrs",
+    img:  "/trainers/trainer1.jpg",
     rating: 5,
-    certifications: ["ACE Certified", "Zumba Instructor"],
-    desc: "Expert in HIIT, cardio programs, and functional movement. Passionate about women's fitness.",
+    certifications: ["ACE Certified", "NSCA-CPT"],
+    desc: "Expert in strength training and muscle development, helping members achieve their fitness goals.",
     whatsapp: "tel:+919840431433",
   },
   {
     id:   3,
-    name: "Karthik Rajan",
+    name: "",
+    role: "Fitness Trainer",
+    speciality: "Functional & HIIT Training",
+    exp:  "5+ Yrs",
+    img:  "/trainers/trainer2.jpg",
+    rating: 5,
+    certifications: ["ACE Certified", "Nutrition Coach"],
+    desc: "Specializes in high-intensity interval training and functional movement for maximum results.",
+    whatsapp: "tel:+919840431433",
+  },
+  {
+    id:   4,
+    name: "",
     role: "Senior Trainer",
     speciality: "Bodybuilding & Nutrition",
     exp:  "8+ Yrs",
-    img:  "/trainer3.png",
+    img:  "/trainers/trainer3.jpg",
     rating: 5,
     certifications: ["NSCA-CPT", "Sports Nutrition"],
     desc: "Competitive bodybuilder and certified trainer helping members achieve their physique goals.",
+    whatsapp: "tel:+919840431433",
+  },
+  {
+    id:   5,
+    name: "",
+    role: "Fitness Trainer",
+    speciality: "Cardio & Weight Loss",
+    exp:  "4+ Yrs",
+    img:  "/trainers/trainer4.jpg",
+    rating: 5,
+    certifications: ["ACE Certified", "Zumba Instructor"],
+    desc: "Dedicated to helping members with cardio, endurance and weight loss transformation programs.",
+    whatsapp: "tel:+919840431433",
+  },
+  {
+    id:   6,
+    name: "",
+    role: "Fitness Trainer",
+    speciality: "General Fitness",
+    exp:  "3+ Yrs",
+    img:  "/trainers/trainer5.jpg",
+    rating: 5,
+    certifications: ["Certified Personal Trainer"],
+    desc: "Passionate about helping individuals achieve their general fitness and wellness goals.",
+    whatsapp: "tel:+919840431433",
+  },
+  {
+    id:   7,
+    name: "",
+    role: "Fitness Trainer",
+    speciality: "Women's Fitness",
+    exp:  "5+ Yrs",
+    img:  "/trainers/trainer6.jpg",
+    rating: 5,
+    certifications: ["ACE Certified"],
+    desc: "Specializes in women's health, fitness, and strength training.",
+    whatsapp: "tel:+919840431433",
+  },
+  {
+    id:   8,
+    name: "",
+    role: "Fitness Trainer",
+    speciality: "Strength Training",
+    exp:  "4+ Yrs",
+    img:  "/trainers/trainer7.jpg",
+    rating: 5,
+    certifications: ["ISSA Certified"],
+    desc: "Focuses on building strength and muscle mass through tailored workout plans.",
     whatsapp: "tel:+919840431433",
   },
 ];
@@ -82,9 +143,36 @@ function TrainerCard({ trainer, index }) {
           transition={{ duration: 0.6 }}
           src={trainer.img}
           alt={trainer.name}
+          onError={(e) => {
+            e.target.style.display = "none";
+            e.target.parentElement.style.background = "linear-gradient(135deg, #1a1a1a, #222)";
+            e.target.parentElement.innerHTML += `<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px"><div style="width:80px;height:80px;border-radius:50%;background:#333;display:flex;align-items:center;justify-content:center;font-size:36px">👤</div><span style="color:#555;font-size:11px;letter-spacing:1px;text-transform:uppercase">Photo Coming Soon</span></div>`;
+          }}
           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }}
         />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, #111 0%, transparent 60%)" }} />
+
+
+        {/* Founder badge */}
+        {trainer.isFounder && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5, type: "spring" }}
+            style={{
+              position: "absolute", top: 12, left: 12,
+              background: "linear-gradient(135deg, #f5c518, #e0a800)",
+              color: "#000",
+              fontSize: 9, fontWeight: 900,
+              padding: "4px 10px", borderRadius: "999px",
+              textTransform: "uppercase", letterSpacing: "1.5px",
+              display: "flex", alignItems: "center", gap: 4,
+              boxShadow: "0 2px 12px rgba(245,197,24,0.5)"
+            }}
+          >
+            👑 Founder
+          </motion.div>
+        )}
 
         {/* Experience badge */}
         <motion.div 
@@ -276,12 +364,34 @@ function Trainers() {
             initial={{ scaleX: 0 }}
             animate={inView ? { scaleX: 1 } : {}}
             transition={{ delay: 0.4, duration: 0.6, type: "spring" }}
-            style={{ width: 64, height: 2, background: "#f5c518", margin: "20px auto 0" }}
+            style={{ width: 64, height: 2, background: "#f5c518", margin: "20px auto 40px" }}
           />
+          
+          {/* Group Photo */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ delay: 0.5, duration: 0.8, type: "spring" }}
+            style={{
+              width: "100%",
+              maxWidth: "900px",
+              margin: "0 auto 60px",
+              borderRadius: "24px",
+              overflow: "hidden",
+              border: "1px solid #333",
+              boxShadow: "0 20px 40px rgba(0,0,0,0.5)"
+            }}
+          >
+            <img 
+              src="/trainers/team.jpg" 
+              alt="H4 Fitness Team" 
+              style={{ width: "100%", display: "block", objectFit: "cover", maxHeight: "500px", objectPosition: "center 20%" }} 
+            />
+          </motion.div>
         </div>
 
         {/* Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {trainers.map((trainer, i) => (
             <TrainerCard key={trainer.id} trainer={trainer} index={i} />
           ))}

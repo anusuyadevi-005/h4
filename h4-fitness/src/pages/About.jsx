@@ -355,7 +355,7 @@ function About() {
                 },
                 {
                   icon: <FaEnvelope />, title: "Email",
-                  content: "info@h4fitness.in", href: "mailto:info@h4fitness.in",
+                  content: "h4fitnessstudio@gmail.com", href: "mailto:h4fitnessstudio@gmail.com",
                 },
               ].map((item, i) => (
                 <motion.div

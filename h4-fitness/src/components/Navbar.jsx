@@ -7,6 +7,8 @@ const navLinks = [
   { to: "/",          label: "Home" },
   { to: "/about",     label: "About Us" },
   { to: "/machinery", label: "Machinery" },
+  { to: "/trainers",  label: "Trainers" },
+  { to: "/membership",label: "Membership" },
   { to: "/contact",   label: "Contact" },
 ];
 
@@ -98,8 +100,8 @@ function Navbar() {
 
           {/* CTA + hamburger */}
           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-            <a
-              href="tel:+919840431433"
+            <Link
+              to="/contact"
               id="nav-join-btn"
               className="shimmer-btn hidden md:inline-flex"
               style={{
@@ -116,7 +118,7 @@ function Navbar() {
               onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
             >
               Join Now
-            </a>
+            </Link>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className="md:hidden"
@@ -185,25 +187,29 @@ function Navbar() {
                 </Link>
               </motion.div>
             ))}
-            <motion.a
-              href="tel:+919840431433"
+            <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.35 }}
-              className="shimmer-btn"
-              style={{
-                padding:       "16px 40px",
-                borderRadius:  "999px",
-                fontSize:      16,
-                fontWeight:    700,
-                textTransform: "uppercase",
-                letterSpacing: "2px",
-                marginTop:     "16px",
-                textDecoration:"none",
-              }}
+              style={{ marginTop: "16px" }}
             >
-              Join Now
-            </motion.a>
+              <Link
+                to="/contact"
+                className="shimmer-btn"
+                style={{
+                  display:       "inline-block",
+                  padding:       "16px 40px",
+                  borderRadius:  "999px",
+                  fontSize:      16,
+                  fontWeight:    700,
+                  textTransform: "uppercase",
+                  letterSpacing: "2px",
+                  textDecoration:"none",
+                }}
+              >
+                Join Now
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
