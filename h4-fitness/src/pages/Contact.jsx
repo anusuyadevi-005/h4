@@ -49,7 +49,7 @@ function ContactInfoCard({ icon, title, text, href, delay }) {
 }
 
 function Contact() {
-  useEffect(() => { document.title = "Contact Us – H4 Fitness Studio Medavakkam"; }, []);
+  useEffect(() => { document.title = "Contact Us – H4 Fitness Studio | Medavakkam & Semmancheri"; }, []);
 
   const headRef = useRef(null);
   const inView  = useInView(headRef, { once: true });
@@ -155,33 +155,34 @@ function Contact() {
                 Let's Talk <span className="gradient-text">Fitness</span>
               </motion.h2>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 18 }}>
                 <ContactInfoCard
                   delay={0.1}
                   icon={<FaMapMarkerAlt />}
-                  title="Studio Location"
-                  text="No. 10/419, 1st Floor, Dr. Ramayanagar, Mambakkam–Medavakkam Main Road, Chennai – 600100"
+                  title="Branch 1: Medavakkam Studio (4.8★)"
+                  text="No. 10/419, 1st Floor, Dr. Ramayanagar, Mambakkam–Medavakkam Main Rd, Chennai – 600100"
+                  href="https://maps.google.com/?q=H4+Fitness+Studio+Medavakkam"
                 />
                 <ContactInfoCard
                   delay={0.2}
+                  icon={<FaMapMarkerAlt />}
+                  title="Branch 2: Semmancheri Studio (5.0★)"
+                  text="721, Kailasah Plaza, Plot No. 710, Nookampalayam Link Road, Semmancheri, Chennai – 600119"
+                  href="https://maps.google.com/?q=H4+Fitness+Studio+Semmancheri+Chennai"
+                />
+                <ContactInfoCard
+                  delay={0.3}
                   icon={<FaPhoneAlt />}
-                  title="Phone Number"
+                  title="Phone & WhatsApp (Both Branches)"
                   text="+91 98404 31433"
                   href="tel:+919840431433"
                 />
                 <ContactInfoCard
-                  delay={0.3}
-                  icon={<FaEnvelope />}
-                  title="Email Address"
-                  text="h4fitnessstudio@gmail.com"
-                  href="mailto:h4fitnessstudio@gmail.com"
-                />
-                <ContactInfoCard
                   delay={0.4}
                   icon={<FaEnvelope />}
-                  title="Email Address"
-                  text="Karthik.d84@gmail.com"
-                  href="mailto:Karthik.d84@gmail.com"
+                  title="Official Email"
+                  text="h4fitnessstudio@gmail.com"
+                  href="mailto:h4fitnessstudio@gmail.com"
                 />
               </div>
 
@@ -268,7 +269,29 @@ function Contact() {
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: 0.5 }}
+                  transition={{ delay: 0.45 }}
+                >
+                  <label style={{ display: "block", color: "#999", fontSize: 12, fontWeight: 600, marginBottom: 8, textTransform: "uppercase", letterSpacing: "1px" }}>
+                    Select Preferred Branch
+                  </label>
+                  <select
+                    style={{
+                      width: "100%", background: "#080808", border: "1px solid #333",
+                      padding: "14px 16px", borderRadius: 8, color: "#fff", fontSize: 14,
+                      outline: "none", cursor: "pointer"
+                    }}
+                  >
+                    <option value="medavakkam">Branch 1 · Medavakkam (Mambakkam–Medavakkam Main Rd)</option>
+                    <option value="semmancheri">Branch 2 · Semmancheri (Nookampalayam Link Rd)</option>
+                    <option value="both">Both / Need guidance on nearest location</option>
+                  </select>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.55 }}
                 >
                   <label style={{ display: "block", color: "#999", fontSize: 12, fontWeight: 600, marginBottom: 8, textTransform: "uppercase", letterSpacing: "1px" }}>
                     Your Message
@@ -303,6 +326,96 @@ function Contact() {
             </motion.div>
 
           </div>
+
+          {/* Dual-Branch Interactive Map Toggle */}
+          <div style={{ marginTop: 80, borderTop: "1px solid #222", paddingTop: 60 }}>
+            <div style={{ textAlign: "center", marginBottom: 36 }}>
+              <span style={{ color: "#f5c518", fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "2px" }}>
+                Find Your Studio
+              </span>
+              <h3 className="display-font" style={{ color: "#fff", fontSize: "clamp(28px, 4vw, 44px)", margin: "8px 0 0" }}>
+                LOCATE OUR <span className="gradient-text">BRANCHES</span>
+              </h3>
+            </div>
+
+            <div style={{
+              background: "#111",
+              border: "1px solid #222",
+              borderRadius: 20,
+              overflow: "hidden"
+            }}>
+              <div style={{
+                padding: "16px 24px",
+                background: "#161616",
+                borderBottom: "1px solid #222",
+                display: "flex",
+                flexWrap: "wrap",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 16
+              }}>
+                <div style={{ display: "flex", gap: 12 }}>
+                  <a
+                    href="https://maps.google.com/?q=H4+Fitness+Studio+Medavakkam"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shimmer-btn"
+                    style={{
+                      padding: "8px 18px",
+                      borderRadius: 999,
+                      fontSize: 12,
+                      fontWeight: 700,
+                      textDecoration: "none"
+                    }}
+                  >
+                    📍 Medavakkam Map
+                  </a>
+                  <a
+                    href="https://maps.google.com/?q=H4+Fitness+Studio+Semmancheri+Chennai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: "8px 18px",
+                      borderRadius: 999,
+                      fontSize: 12,
+                      fontWeight: 700,
+                      textDecoration: "none",
+                      background: "#222",
+                      color: "#f5c518",
+                      border: "1px solid rgba(245,197,24,0.3)"
+                    }}
+                  >
+                    📍 Semmancheri Map
+                  </a>
+                </div>
+                <p style={{ color: "#888", fontSize: 13, margin: 0 }}>
+                  Open Daily 5:00 AM – 11:00 PM at both locations
+                </p>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", minHeight: 380 }}>
+                <iframe
+                  title="Medavakkam Branch Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8088264!2d80.20497531482!3d12.9116082909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525de65b3a47eb%3A0xc93f7a5cb1090b85!2sH4%20Fitness%20Studio!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+                  width="100%"
+                  height="380"
+                  style={{ border: 0, borderRight: "1px solid #222", filter: "invert(90%) hue-rotate(180deg)" }}
+                  allowFullScreen
+                  loading="lazy"
+                />
+                <iframe
+                  title="Semmancheri Branch Map"
+                  src="https://maps.google.com/maps?q=H4+Fitness+Studio+Semmancheri+Chennai&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="380"
+                  style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
+                  allowFullScreen
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 

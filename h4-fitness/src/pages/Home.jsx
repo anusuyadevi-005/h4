@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 function Home() {
   useEffect(() => {
-    document.title = "H4 Fitness Studio – Premium Gym in Medavakkam, Chennai";
+    document.title = "H4 Fitness Studio – Premier Gym in Medavakkam & Semmancheri, Chennai";
   }, []);
 
   return (

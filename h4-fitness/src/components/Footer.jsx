@@ -27,15 +27,14 @@ function Footer() {
                 <p style={{ fontSize: 16, fontWeight: 900, color: "#111", lineHeight: 1, margin: 0 }}>
                   H4 <span style={{ color: "#d4a200" }}>FITNESS</span>
                 </p>
-                <p style={{ fontSize: 9, color: "#999", letterSpacing: "2px", textTransform: "uppercase", margin: 0 }}>
-                  Studio · Medavakkam
+                <p style={{ fontSize: 9, color: "#999", letterSpacing: "1.5px", textTransform: "uppercase", margin: 0 }}>
+                  Medavakkam · Semmancheri
                 </p>
               </div>
             </Link>
 
             <p style={{ color: "#666", fontSize: 13, lineHeight: 1.7, marginBottom: 22 }}>
-              Your premier fitness destination in Medavakkam. Transforming lives
-              through expert coaching and world-class facilities.
+              Your premier fitness destination in Chennai with state-of-the-art studios in Medavakkam and Semmancheri. Transforming lives through expert coaching and world-class facilities.
             </p>
 
             {/* Socials */}
@@ -77,7 +76,9 @@ function Footer() {
               {[
                 { to: "/", label: "Home" },
                 { to: "/about", label: "About Us" },
+                { to: "/branches", label: "Branches" },
                 { to: "/machinery", label: "Machinery" },
+                { to: "/trainers", label: "Trainers" },
                 { to: "/contact", label: "Contact" },
               ].map((link) => (
                 <li key={link.to}>
@@ -129,31 +130,48 @@ function Footer() {
             <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 18 }}>
 
               <li>
-                <span style={{ display: "inline-block", background: "#fff8e1", color: "#b8860b", fontSize: 9, fontWeight: 800, letterSpacing: "1.5px", textTransform: "uppercase", borderRadius: 4, padding: "3px 8px", marginBottom: 8 }}>
-                  Branch 1 · Medavakkam
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+                  <span style={{ display: "inline-block", background: "#fff8e1", color: "#b8860b", fontSize: 9, fontWeight: 800, letterSpacing: "1px", textTransform: "uppercase", borderRadius: 4, padding: "3px 8px" }}>
+                    Branch 1 · Medavakkam (4.8★)
+                  </span>
+                </div>
                 <div style={{ display: "flex", gap: 8 }}>
                   <FaMapMarkerAlt style={{ color: "#d4a200", fontSize: 12, marginTop: 3, flexShrink: 0 }} />
-                  <p style={{ color: "#666", fontSize: 13, lineHeight: 1.65, margin: 0 }}>
-                    No. 10/419, 1st Floor,<br />
-                    Dr. Ramayanagar,<br />
+                  <a 
+                    href="https://maps.google.com/?q=H4+Fitness+Studio+Medavakkam"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "#666", fontSize: 13, lineHeight: 1.6, textDecoration: "none" }}
+                    onMouseEnter={e => e.currentTarget.style.color = "#111"}
+                    onMouseLeave={e => e.currentTarget.style.color = "#666"}
+                  >
+                    No. 10/419, 1st Floor, Dr. Ramayanagar,<br />
                     Mambakkam–Medavakkam Main Rd,<br />
-                    Chennai – 600100
-                  </p>
+                    Chennai – 600100 ↗
+                  </a>
                 </div>
               </li>
 
               <li>
-                <span style={{ display: "inline-block", background: "#fff8e1", color: "#b8860b", fontSize: 9, fontWeight: 800, letterSpacing: "1.5px", textTransform: "uppercase", borderRadius: 4, padding: "3px 8px", marginBottom: 8 }}>
-                  Branch 2 · Semmancheri
-                </span>
+                <div style={{ display: "flex", alignItems: "center", gap: 6, marginBottom: 6 }}>
+                  <span style={{ display: "inline-block", background: "#fff8e1", color: "#b8860b", fontSize: 9, fontWeight: 800, letterSpacing: "1px", textTransform: "uppercase", borderRadius: 4, padding: "3px 8px" }}>
+                    Branch 2 · Semmancheri (5.0★)
+                  </span>
+                </div>
                 <div style={{ display: "flex", gap: 8 }}>
                   <FaMapMarkerAlt style={{ color: "#d4a200", fontSize: 12, marginTop: 3, flexShrink: 0 }} />
-                  <p style={{ color: "#666", fontSize: 13, lineHeight: 1.65, margin: 0 }}>
+                  <a 
+                    href="https://maps.google.com/?q=H4+Fitness+Studio+Semmancheri+Chennai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: "#666", fontSize: 13, lineHeight: 1.6, textDecoration: "none" }}
+                    onMouseEnter={e => e.currentTarget.style.color = "#111"}
+                    onMouseLeave={e => e.currentTarget.style.color = "#666"}
+                  >
                     721, Kailasah Plaza, Plot No. 710,<br />
                     Nookampalayam Link Road,<br />
-                    Semmancheri, Chennai – 600119
-                  </p>
+                    Semmancheri, Chennai – 600119 ↗
+                  </a>
                 </div>
               </li>
 

@@ -6,6 +6,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const navLinks = [
   { to: "/",          label: "Home" },
   { to: "/about",     label: "About Us" },
+  { to: "/branches",  label: "Branches" },
   { to: "/machinery", label: "Machinery" },
   { to: "/trainers",  label: "Trainers" },
   { to: "/membership",label: "Membership" },
@@ -55,8 +56,8 @@ function Navbar() {
               <p style={{ fontSize: 17, fontWeight: 900, color: "#fff", letterSpacing: "-0.03em", margin: 0 }}>
                 H4 <span style={{ color: "#f5c518" }}>FITNESS</span>
               </p>
-              <p style={{ fontSize: 9, color: "#888", letterSpacing: "3px", textTransform: "uppercase", margin: 0 }}>
-                Studio · Medavakkam
+              <p style={{ fontSize: 9, color: "#888", letterSpacing: "1.5px", textTransform: "uppercase", margin: 0 }}>
+                Medavakkam · Semmancheri
               </p>
             </div>
           </Link>

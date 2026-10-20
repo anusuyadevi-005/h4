@@ -25,12 +25,13 @@ const features = [
 ];
 
 function About() {
-  useEffect(() => { document.title = "About Us – H4 Fitness Studio Medavakkam"; }, []);
+  useEffect(() => { document.title = "About Us – H4 Fitness Studio | Medavakkam & Semmancheri"; }, []);
 
   const headRef   = useRef(null);
   const inView    = useInView(headRef, { once: true });
   const mapRef    = useRef(null);
   const mapInView = useInView(mapRef, { once: true });
+  const [activeBranchIdx, setActiveBranchIdx] = useState(0);
   
   // Parallax effects
   const { scrollYProgress } = useScroll();
@@ -97,7 +98,7 @@ function About() {
             transition={{ delay: 0.25 }}
             style={{ color: "#999", marginTop: 12, fontSize: 16, maxWidth: 540, lineHeight: 1.7 }}
           >
-            Medavakkam's premier fitness destination. Where passion meets
+            Chennai's premier fitness destination across Medavakkam & Semmancheri. Where passion meets
             performance, and every member's journey is personal.
           </motion.p>
           <motion.div
@@ -317,13 +318,13 @@ function About() {
       {/* ── Location + Map ── */}
       <section style={{ padding: "80px 0", background: "#0a0a0a" }} ref={mapRef}>
         <div className="container">
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ textAlign: "center", marginBottom: 36 }}>
             <motion.p
               initial={{ opacity: 0 }}
               animate={mapInView ? { opacity: 1 } : {}}
               style={{ color: "#f5c518", textTransform: "uppercase", letterSpacing: "3px", fontSize: 11, fontWeight: 600, marginBottom: 12 }}
             >
-              Find Us
+              Visit Our Studios
             </motion.p>
             <motion.h2
               initial={{ opacity: 0, y: 20, rotateX: 90 }}
@@ -332,9 +333,38 @@ function About() {
               className="display-font"
               style={{ color: "#fff", fontSize: "clamp(36px, 5vw, 64px)", margin: 0, transformOrigin: "top" }}
             >
-              OUR <span className="gradient-text">LOCATION</span>
+              OUR <span className="gradient-text">LOCATIONS</span>
             </motion.h2>
-            <div style={{ width: 64, height: 2, background: "#f5c518", margin: "16px auto 0" }} />
+            <p style={{ color: "#888", fontSize: 14, marginTop: 8 }}>
+              Two modern studios across Chennai — Choose a location to view details
+            </p>
+            <div style={{ width: 64, height: 2, background: "#f5c518", margin: "16px auto 24px" }} />
+
+            {/* Branch Switcher Buttons */}
+            <div style={{ display: "inline-flex", background: "#161616", border: "1px solid #333", borderRadius: 999, padding: 4, gap: 4 }}>
+              {[
+                { id: 0, name: "Medavakkam Branch (4.8★)" },
+                { id: 1, name: "Semmancheri Branch (5.0★)" },
+              ].map(b => (
+                <button
+                  key={b.id}
+                  onClick={() => setActiveBranchIdx(b.id)}
+                  style={{
+                    background: activeBranchIdx === b.id ? "#f5c518" : "transparent",
+                    color: activeBranchIdx === b.id ? "#000" : "#bbb",
+                    border: "none",
+                    borderRadius: 999,
+                    padding: "10px 22px",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    cursor: "pointer",
+                    transition: "all 0.25s"
+                  }}
+                >
+                  {b.name}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 32, alignItems: "stretch" }}>
@@ -342,15 +372,18 @@ function About() {
             <div style={{ display: "flex", flexDirection: "column", gap: 16, justifyContent: "center" }}>
               {[
                 {
-                  icon: <FaMapMarkerAlt />, title: "Address",
-                  content: "No. 10/419, 1st Floor, Dr. Ramayanagar, Mambakkam–Medavakkam Main Road, Near BSNL Telephone Exchange, Chennai – 600100",
+                  icon: <FaMapMarkerAlt />, 
+                  title: activeBranchIdx === 0 ? "Medavakkam Studio Address" : "Semmancheri Studio Address",
+                  content: activeBranchIdx === 0
+                    ? "No. 10/419, 1st Floor, Dr. Ramayanagar, Mambakkam–Medavakkam Main Road, Near BSNL Telephone Exchange, Chennai – 600100"
+                    : "721, Kailasah Plaza, Plot No. 710, Nookampalayam Link Road, Semmancheri (Perumbakkam), Chennai – 600119",
                 },
                 {
                   icon: <FaClock />, title: "Timings",
-                  content: "Monday – Sunday\n5:00 AM – 11:00 PM",
+                  content: "Monday – Sunday\n5:00 AM – 11:00 PM (Both Branches)",
                 },
                 {
-                  icon: <FaPhone />, title: "Phone",
+                  icon: <FaPhone />, title: "Direct Phone",
                   content: "+91 98404 31433", href: "tel:+919840431433",
                 },
                 {
@@ -359,10 +392,10 @@ function About() {
                 },
               ].map((item, i) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={mapInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: i * 0.1, type: "spring" }}
+                  key={item.title + activeBranchIdx}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.08, type: "spring" }}
                   whileHover={{ scale: 1.02, x: 5, borderColor: "rgba(245,197,24,0.4)" }}
                   style={{
                     background: "#111", border: "1px solid #222",
@@ -406,17 +439,21 @@ function About() {
 
             {/* Map */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
-              animate={mapInView ? { opacity: 1, scale: 1, rotateY: 0 } : {}}
-              transition={{ delay: 0.3, duration: 0.8, type: "spring" }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={mapInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ delay: 0.3, duration: 0.6 }}
               style={{
                 borderRadius: 12, overflow: "hidden", border: "1px solid rgba(245,197,24,0.2)",
                 boxShadow: "0 20px 40px rgba(0,0,0,0.4)", minHeight: 400
               }}
             >
               <iframe
-                title="H4 Fitness Studio Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8088264!2d80.20497531482!3d12.9116082909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525de65b3a47eb%3A0xc93f7a5cb1090b85!2sH4%20Fitness%20Studio!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+                key={activeBranchIdx}
+                title={activeBranchIdx === 0 ? "H4 Fitness Studio Medavakkam" : "H4 Fitness Studio Semmancheri"}
+                src={activeBranchIdx === 0
+                  ? "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.8088264!2d80.20497531482!3d12.9116082909!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525de65b3a47eb%3A0xc93f7a5cb1090b85!2sH4%20Fitness%20Studio!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+                  : "https://maps.google.com/maps?q=H4+Fitness+Studio+Semmancheri+Chennai&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                }
                 width="100%"
                 height="100%"
                 style={{ border: 0, filter: "invert(90%) hue-rotate(180deg)" }}
@@ -435,7 +472,10 @@ function About() {
           >
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} style={{ display: "inline-block" }}>
               <a
-                href="https://maps.google.com/?q=H4+Fitness+Studio+Medavakkam"
+                href={activeBranchIdx === 0
+                  ? "https://maps.google.com/?q=H4+Fitness+Studio+Medavakkam"
+                  : "https://maps.google.com/?q=H4+Fitness+Studio+Semmancheri+Chennai"
+                }
                 target="_blank"
                 rel="noopener noreferrer"
                 id="get-directions-btn"
@@ -449,7 +489,7 @@ function About() {
                 }}
               >
                 <FaMapMarkerAlt />
-                Get Directions
+                Get Directions to {activeBranchIdx === 0 ? "Medavakkam" : "Semmancheri"}
               </a>
             </motion.div>
           </motion.div>

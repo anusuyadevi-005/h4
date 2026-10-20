@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaArrowRight, FaPlay, FaStar } from "react-icons/fa";
+import { FaArrowRight, FaPlay, FaStar, FaMapMarkerAlt } from "react-icons/fa";
 
 const HERO_IMAGES = [
   "/gym/gym1.jpg",  // H4 Fitness – machine floor (wide)
@@ -14,10 +14,10 @@ const HERO_IMAGES = [
 const words = ["STRONGER", "FASTER", "LEANER", "BETTER"];
 
 const STATS = [
+  { num: "2",     label: "Flagship Branches" },
   { num: "1500+", label: "Happy Members" },
-  { num: "10+",   label: "Expert Trainers" },
-  { num: "50+",   label: "Premium Machines" },
-  { num: "5AM–11PM", label: "Open Daily" },
+  { num: "4.9★",  label: "310+ Google Reviews" },
+  { num: "5AM–11PM", label: "Open Daily (Both Branches)" },
 ];
 
 function Hero() {
@@ -112,7 +112,7 @@ function Hero() {
           >
             <span className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
             <span className="text-yellow-400 text-xs font-semibold uppercase tracking-[2px]">
-              #1 Fitness Studio in Medavakkam
+              2 Flagship Branches in Chennai · Medavakkam & Semmancheri
             </span>
           </motion.div>
 
@@ -143,11 +143,10 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
             className="text-gray-300 text-base md:text-lg mt-5 leading-relaxed"
-            style={{ maxWidth: "480px" }}
+            style={{ maxWidth: "520px" }}
           >
-            Train with certified coaches, premium equipment and a motivating community.
-            Your transformation starts at{" "}
-            <span className="text-yellow-400 font-semibold">H4 Fitness Studio</span>.
+            Train with certified coaches, premium equipment and a motivating community across our{" "}
+            <span className="text-yellow-400 font-semibold">Medavakkam & Semmancheri</span> studios.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -165,14 +164,14 @@ function Hero() {
               Start Your Journey
               <FaArrowRight className="text-xs" />
             </Link>
-            <a
-              href="#trainers"
+            <Link
+              to="/trainers"
               id="hero-trainers-btn"
               className="flex items-center gap-2.5 border-2 border-white/25 hover:border-yellow-400 text-white hover:text-yellow-400 transition-all duration-300 px-7 py-3.5 rounded-full font-bold uppercase tracking-wider text-sm"
             >
               <FaPlay className="text-xs" />
               Meet Trainers
-            </a>
+            </Link>
           </motion.div>
 
           {/* Social proof */}

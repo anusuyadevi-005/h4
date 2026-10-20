@@ -151,8 +151,8 @@ function CTA() {
           transition={{ delay: 0.6 }}
           style={{ marginTop: 32 }}
         >
-          <p style={{ color: "#444", fontSize: 13, lineHeight: 1.6, margin: 0 }}>
-            📍 No. 10/419, 1st Floor, Dr. Ramayanagar, Mambakkam–Medavakkam Main Road
+          <p style={{ color: "#666", fontSize: 13, lineHeight: 1.6, margin: 0 }}>
+            📍 2 Prime Chennai Studios: <span style={{ color: "#f5c518" }}>Medavakkam</span> (Mambakkam–Medavakkam Main Rd) & <span style={{ color: "#f5c518" }}>Semmancheri</span> (Nookampalayam Link Rd)
           </p>
         </motion.div>
       </div>
